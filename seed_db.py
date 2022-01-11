@@ -1,14 +1,14 @@
 import csv
-import crud
-import model
-import server
+#import crud
+#import model
+#import server
 import os
 
-os.system("dropdb ratings")
-os.system("createdb ratings")
+# os.system("dropdb ratings")
+# os.system("createdb ratings")
 
-model.connect_to_db(server.py)
-model.db.create_all()
+# model.connect_to_db(server.py)
+# model.db.create_all()
 
 # Load trail data from csv file
 with open ("trails_data.csv", newline="") as f:
@@ -31,5 +31,6 @@ with open ("trails_data.csv", newline="") as f:
         features = trail["features"]
         activities = trail["activities"]
         #print(name, " : ", park)
-        db_trail = crud.create_trail(trail_id, name, park, city, state, popularity, length, elevation, difficulty_rating, features, activities)
-        trails_in_db.append(db_trail)
+        #print(features)
+        #db_trail = crud.create_trail(trail_id, name, park, city, state, popularity, length, elevation, difficulty_rating, features, activities)
+        #trails_in_db.append(db_trail)
