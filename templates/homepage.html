@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>National Park Hiking Trail</h1>
+
+<h2>Log in</h2>
+
+<form action="/login" method="POST">
+    <p>
+        Email <input type = "text" name = "email">
+    </p>
+    <p>
+        Password <input type = "text" name = "password">
+    </p>
+    <p>
+        <input type = "submit">
+    </p>
+</form>
+<br>
+<p>
+    If you do not have an acount, please sign up.
+</p>
+<h3>Create an Account</h3>
+
+<form action = "/signup" method = "POST">
+    <p>
+        Email <input type = "text" name = "email">
+    </p>
+    <p>
+        First Name <input type = "text" name = "first_name">
+    </p>
+    <p>
+        Last name <input type = "text" name = "last_name">
+    </p>
+    <p>
+        Password <input type = "text" name = "password">
+    </p>
+    <p>
+        <input type = "submit">
+    </p>        
+</form>
+{% endblock %}
