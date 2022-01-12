@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class User(db.model):
+class User(db.Model):
     """A user"""
 
     __tablename__ = "users"
@@ -18,10 +18,10 @@ class User(db.model):
     def __repr__(self):
         return f"<User user id={self.user_id} email={self.email}>"
 
-class Trail(db.model):
+class Trail(db.Model):
     """A trail"""
 
-    __tablename__ = "Trails"
+    __tablename__ = "trails"
 
     trail_id = db.Column(db.Integer, primary_key=True) 
     name = db.Column(db.String)
@@ -31,19 +31,20 @@ class Trail(db.model):
     popularity = db.Column(db.Float) 
     length = db.Column(db.Float) 
     elevation = db.Column(db.Float)
-    difficulty = db.Column(db.Integer) 
+    difficulty = db.Column(db.Integer)
+    avg_rating = db.Column(db.Float) 
     features = db.Column(db.Text) 
     activities = db.Column(db.Text)
 
     def __repr__(self):
         return f"<Trail trail id={self.trail_id} name={self.name}>"
 
-class Rating(db.model):
+class Rating(db.Model):
     """Return a rating"""
 
     __tablename__ = "ratings"
 
-    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     trail_id = db.Column(db.Integer, db.ForeignKey("trails.trail_id"))
     rating = db.Column(db.Float)
@@ -53,10 +54,11 @@ class Rating(db.model):
     trail = db.relationship("Trail", backref="ratings")
 
     def __repr__(self):
-        return f"<Rating id={self.id} rating={self.rating}>"
+        return f"<Rating id={self.rating_id} rating={self.rating}>"
 
-def connect_to_db(flask_app, db.uri="postgresql:///ratings", echo=True):
-    flask_app.config["SQLALCHEMY_DATABASE_URI"] = db.uri
+
+def connect_to_db(flask_app, db_uri="postgresql:///ratings", echo=True):
+    flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -65,6 +67,10 @@ def connect_to_db(flask_app, db.uri="postgresql:///ratings", echo=True):
 
     print("Connected to the db!")
 
+if __name__ == "__main__":
+    from server import app
+
+    connect_to_db(app)
 
 
 
