@@ -24,8 +24,16 @@ def homepage():
 def all_trails():
     """View all trails"""
 
-    trials = crud.get_trail()
-    return render_template("all_trails.html", trails = trails)
+    trails = crud.get_trails()
+    return render_template("all_trails.html", trails=trails)
+
+@app.route("/trails/<trail_id>")
+def show_trail(trail_id):
+    """Show detail of a particular trail"""
+
+    trail = crud.get_trail_by_id(trail_id)
+    return render_template("trails_detail.html", trail=trail)
+
 
 
 

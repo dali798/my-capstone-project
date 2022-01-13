@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-    <meta charset="UTF-8" />
-    <title>National Park Hiking Trails</title>
-</head>
-<body>
-    {% block body %}
-    {% endblock %}
-</body>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width">
+      <title>
+        {% block title %}{% endblock %}
+      </title>
+    </head>
+    <body>
+    {% block body %}{% endblock %}
+
+    {% block afterbody %}{% endblock %}
+    </body>
 </html>

@@ -1,11 +1,10 @@
 """CRUD operations"""
 from model import db, User, Trail, Rating, connect_to_db
 
-def create_user(user_id, first_name, last_name, email, password):
+def create_user(first_name, last_name, email, password):
     """create and return a new user"""
 
     user = User(
-        user_id = user_id,
         first_name = first_name,
         last_name = last_name,
         email = email,
@@ -59,16 +58,16 @@ def create_trail(trail_id, name, park, city, state, popularity, length, elevatio
     return trail
 
 
-def get_trail():
+def get_trails():
     """return all trails"""
 
     return Trail.query.all()
 
 
-def get_trail_by_id(movie_id):
+def get_trail_by_id(trail_id):
     """return a trail by id"""
 
-    return Movie.query.get(movie_id)
+    return Trail.query.get(trail_id)
 
 
 def create_rating(rating_id, user_id, trail_id, rating, comment):
@@ -86,7 +85,7 @@ def create_rating(rating_id, user_id, trail_id, rating, comment):
 
     return rating
 
-if __name__ == "__name__":
+if __name__ == "__main__":
     from server import app
 
     connect_to_db(app)

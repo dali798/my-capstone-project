@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 
+{% block title %}National Park Hiking Trail{% endblock %}
+
 {% block body %}
-<h1>National Park Hiking Trail</h1>
 
-<h2>Log in</h2>
+  <h1>Welcome!</h1>
 
-<form action="/login" method="POST">
+  <h2>Navigation</h2>
+  <ul>
+      <li><a href="/trails">View all trails</a></li>
+  </ul>
+
+  <h2>Log in</h2>
+
+  <form action="/login" method="POST">
     <p>
         Email <input type = "text" name = "email">
     </p>
@@ -15,14 +23,14 @@
     <p>
         <input type = "submit">
     </p>
-</form>
-<br>
-<p>
+  </form>
+  <br>
+  <p>
     If you do not have an acount, please sign up.
-</p>
-<h3>Create an Account</h3>
+  </p>
+  <h3>Create an Account</h3>
 
-<form action = "/signup" method = "POST">
+  <form action = "/signup" method = "POST">
     <p>
         Email <input type = "text" name = "email">
     </p>
@@ -38,5 +46,5 @@
     <p>
         <input type = "submit">
     </p>        
-</form>
+  </form>
 {% endblock %}
