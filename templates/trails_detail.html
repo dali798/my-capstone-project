@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ trail.name }} - Details{% endblock %}
+
+{% block body %}
+<h1>{{ trail.name }}</h1>
+
+    <p>
+        Park: {{ trail.park }}
+    </p>
+    <p>
+        City: {{ trail.city }}
+    </p>
+    <p>
+        State: {{ trail.state }}
+    </p>
+    <p>
+        Popularity: {{ trail.popularity }} 
+    </p>
+    <p>
+        Length: {{ trail.length }}
+    </p>
+    <p>
+        Evlevation: {{ trail.elevation }}
+    </p>
+    <p>
+        Difficulty: {{ trail.difficulty }}
+    </p>
+    <p>
+        Average Rating: {{ trail.avg_rating }} 
+    </p>
+    <p>
+        Features: {{ trail.features }}
+    </p>
+    <p>
+        Activities: {{ trail.activities }}
+    </p>
+
+    {% if session.get('use_email') %}
+    <h2>Rate this trail</h2>
+    <form action="/trails/{{trail.trail_id}}/ratings" method="POST">
+        <p>
+            Rating:
+            <select name="rating">
+                <option value="">Select rating</option>
+                {% for num in range(6) %}
+                    <option value="{{ num }}">{{ num }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p><input type="submit"></p>
+    </form>
+    {% endif %}
+
+{% endblock %}

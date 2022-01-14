@@ -11,7 +11,7 @@ def create_user(first_name, last_name, email, password):
         password = password
     )
     db.session.add(user)
-    db.session.commit
+    db.session.commit()
 
     return user
 
@@ -70,18 +70,13 @@ def get_trail_by_id(trail_id):
     return Trail.query.get(trail_id)
 
 
-def create_rating(rating_id, user_id, trail_id, rating, comment):
+def create_rating(user, trail, score):
     """Create and return a new rating"""
 
-    rating = Rating(
-        rating_id = rating_id,
-        user_id = user_id,
-        trail_id = trail_id,
-        rating = rating,
-        comment = comment
-    )
+    rating = Rating(user = user, trail = trail, score = score)
+    
     db.session.add(rating)
-    db.session.commit
+    db.session.commit()
 
     return rating
 

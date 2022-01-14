@@ -9,19 +9,20 @@
   <h2>Navigation</h2>
   <ul>
       <li><a href="/trails">View all trails</a></li>
+      <li><a href="/users">View all users</a></li>
   </ul>
 
   <h2>Log in</h2>
 
   <form action="/login" method="POST">
     <p>
-        Email <input type = "text" name = "email">
+        Email <input type="text" name="email">
     </p>
     <p>
-        Password <input type = "text" name = "password">
+        Password <input type="text" name="password">
     </p>
     <p>
-        <input type = "submit">
+        <input type="submit">
     </p>
   </form>
   <br>
@@ -30,21 +31,21 @@
   </p>
   <h3>Create an Account</h3>
 
-  <form action = "/signup" method = "POST">
+  <form action="/users" method="POST">
     <p>
-        Email <input type = "text" name = "email">
+        Email <input type="text" name="email">
     </p>
     <p>
-        First Name <input type = "text" name = "first_name">
+        First Name <input type="text" name="first_name">
     </p>
     <p>
-        Last name <input type = "text" name = "last_name">
+        Last name <input type="text" name="last_name">
     </p>
     <p>
-        Password <input type = "text" name = "password">
+        Password <input type="text" name="password">
     </p>
     <p>
-        <input type = "submit">
+        <input type="submit">
     </p>        
   </form>
 {% endblock %}

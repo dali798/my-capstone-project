@@ -45,16 +45,16 @@ class Rating(db.Model):
     __tablename__ = "ratings"
 
     rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    score = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     trail_id = db.Column(db.Integer, db.ForeignKey("trails.trail_id"))
-    rating = db.Column(db.Float)
-    comment = db.Column(db.Text)
+    
 
     user = db.relationship("User", backref="ratings")
     trail = db.relationship("Trail", backref="ratings")
 
     def __repr__(self):
-        return f"<Rating id={self.rating_id} rating={self.rating}>"
+        return f"<Rating id={self.rating_id} rating={self.score}>"
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///ratings", echo=True):
