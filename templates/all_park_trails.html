@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}All Park Trails{% endblock %}
+
+{% block body %}
+<h1>All Park Trails</h1>
+
+<ul>
+    {% for trail in park_trails %}
+      <li>
+        <a href="/trails/{{ trail.trail_id }}">
+          {{ trail.name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

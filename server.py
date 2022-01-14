@@ -35,6 +35,23 @@ def show_trail(trail_id):
 
     trail = crud.get_trail_by_id(trail_id)
     return render_template("trails_detail.html", trail=trail)
+    
+
+@app.route("/parks/<park>")
+def show_park_trails(park):
+    """Show all trails of a park"""
+
+    park_trails = crud.get_trails_by_park(park)
+    return render_template("all_park_trails.html", park_trails=park_trails)
+
+
+@app.route("/parks")
+def show_park():
+    """Show all parks"""
+
+    parks = crud.get_parks_list()
+    parks.sort()
+    return render_template("all_parks.html", parks=parks)
 
 
 @app.route("/users")
@@ -77,7 +94,7 @@ def log_in():
         flash("The email or password you entered is not correct.")
     else:
         #Storing the user's email in session
-        session["use_email"] = user.email
+        session["user_email"] = user.email
         flash(f"Welcome back, {user.first_name}!")
 
     return redirect("/")
@@ -87,7 +104,7 @@ def log_in():
 def create_rating(trail_id):
     """Create a new rating for the trail"""
 
-    log_in_email = session["use_email"]
+    log_in_email = session["user_email"]
     rating_score = request.form.get("rating")
 
 

@@ -1,5 +1,6 @@
 """CRUD operations"""
 from model import db, User, Trail, Rating, connect_to_db
+import csv
 
 def create_user(first_name, last_name, email, password):
     """create and return a new user"""
@@ -69,12 +70,31 @@ def get_trail_by_id(trail_id):
 
     return Trail.query.get(trail_id)
 
+def get_parks_list():
+    """Return all park by list"""
+
+    with open ("trails_data.csv", newline="") as f:
+        trails_data = csv.DictReader(f)
+        parks_list=[]
+        for trail in trails_data:
+            park = trail["area_name"]
+            if park not in parks_list:
+                parks_list.append(park)
+
+    return parks_list
+
+
+def get_trails_by_park(park):
+    """Return trais by park"""
+
+    return Trail.query.filter(Trail.park==park).all()
+
 
 def create_rating(user, trail, score):
     """Create and return a new rating"""
 
     rating = Rating(user = user, trail = trail, score = score)
-    
+
     db.session.add(rating)
     db.session.commit()
 
