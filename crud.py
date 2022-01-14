@@ -82,12 +82,14 @@ def get_parks_list():
                 parks_list.append(park)
 
     return parks_list
+    
 
 
 def get_trails_by_park(park):
     """Return trais by park"""
 
     return Trail.query.filter(Trail.park==park).all()
+
 
 
 def create_rating(user, trail, score):
