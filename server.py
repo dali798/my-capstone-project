@@ -42,7 +42,7 @@ def show_park_trails(park):
     """Show all trails of a park"""
 
     park_trails = crud.get_trails_by_park(park)
-    return render_template("all_park_trails.html", park_trails=park_trails)
+    return render_template("all_park_trails.html", park=park, park_trails=park_trails)
 
 
 @app.route("/parks")
@@ -117,9 +117,16 @@ def create_rating(trail_id):
         trail = crud.get_trail_by_id(trail_id)
 
         crud.create_rating(user, trail, int(rating_score))
-        flash(f"You rate this trail {rating_score} out of 5.0!")
+        flash(f"{user.first_name}, you rate this trail {rating_score} out of 5.0!")
 
     return redirect(f"/trails/{trail_id}")
+
+@app.route("/parks_js")
+def test_page():
+
+    states = crud.get_states_list()
+    states.sort()
+    return render_template("all_park_js.html", states=states)
 
 
 

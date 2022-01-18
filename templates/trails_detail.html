@@ -3,6 +3,7 @@
 {% block title %}{{ trail.name }} - Details{% endblock %}
 
 {% block body %}
+<body>
 <h1>{{ trail.name }}</h1>
 
     <p>
@@ -37,8 +38,9 @@
     </p>
 
     {% if session.get('user_email') %}
+    
     <h2>Rate this trail</h2>
-    <form action="/trails/{{trail.trail_id}}/ratings" method="POST">
+    <form id= "rat" action="/trails/{{trail.trail_id}}/ratings" method="POST">
         <p>
             Rating:
             <select name="rating">
@@ -50,6 +52,12 @@
         </p>
         <p><input type="submit"></p>
     </form>
+    
+        <ul id="rating_list">            
+        </ul>
+    <script src = "static/js/test_submit.js"></script> 
     {% endif %}
 
+       
+</body>
 {% endblock %}

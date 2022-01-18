@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Test Page{% endblock %}
+
+{% block body %}
+<body>
+    <h3>Parks js Page</h3>
+
+    <form id="park_form">
+        Choose a state:
+        <select name = "state">
+            <option value="">select a state</option>
+            {% for state in states %}              
+                <option value="{{ state }}">{{ state }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+
+    <ul id="park-container">
+    </ul>
+
+    
+    <script src = "static/js/trails.js"></script>
+</body>
+{% endblock %}

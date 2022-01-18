@@ -82,6 +82,20 @@ def get_parks_list():
                 parks_list.append(park)
 
     return parks_list
+
+
+def get_states_list():
+    """Return all states by list"""
+
+    with open ("trails_data.csv", newline="") as f:
+        trails_data = csv.DictReader(f)
+        states_list=[]
+        for trail in trails_data:
+            state = trail["state_name"]
+            if state not in states_list:
+                states_list.append(state)
+
+    return states_list
     
 
 
