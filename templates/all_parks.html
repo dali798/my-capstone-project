@@ -4,6 +4,17 @@
 {% block body %}
 <h1>All Parks</h1>
 
+<form id="state_form">
+  Choose a state:
+  <select name = "state">
+      <option value="">select a state</option>
+      {% for state in states %}              
+          <option value="{{ state }}">{{ state }}</option>
+      {% endfor %}
+  </select>
+  <input type="submit">
+</form>
+
 <ul>
     {% for park in parks %}
       <li>

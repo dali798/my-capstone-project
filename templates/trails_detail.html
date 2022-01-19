@@ -37,6 +37,7 @@
         Activities: {{ trail.activities }}
     </p>
 
+
     {% if session.get('user_email') %}
     
     <h2>Rate this trail</h2>
@@ -53,11 +54,18 @@
         <p><input type="submit"></p>
     </form>
     
-        <ul id="rating_list">            
-        </ul>
-    <script src = "static/js/test_submit.js"></script> 
     {% endif %}
 
-       
+    <main>
+        <section class="map">
+            <div id="map"></div>
+        </section>
+    </main>
+
+    <script src="/static/js/maps.js"></script>
+    <script
+        async 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7cj3xtdeGWbARbn1HGHG2gk6ZHNgTRHI&callback=initMap">
+    </script>       
 </body>
 {% endblock %}

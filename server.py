@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db
 import crud
+import os
 
 from jinja2 import StrictUndefined
 
@@ -11,6 +12,8 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 #app.jinja_env.auto_reload = True
+
+# API_KEY = os.environ["WEATHER_KEY"]
 
 
 
@@ -31,9 +34,13 @@ def all_trails():
 
 @app.route("/trails/<trail_id>")
 def show_trail(trail_id):
-    """Show detail of a particular trail"""
+    """Show detail of a particular trail""" 
 
     trail = crud.get_trail_by_id(trail_id)
+    # url = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={trail.city}"
+    # response = requests.get(url)
+    # weather_data = response.json()
+
     return render_template("trails_detail.html", trail=trail)
     
 
@@ -51,7 +58,10 @@ def show_park():
 
     parks = crud.get_parks_list()
     parks.sort()
-    return render_template("all_parks.html", parks=parks)
+    states = crud.get_states_list()
+    states.sort()
+    #state = request.args.get("state")
+    return render_template("all_parks.html", parks=parks, states=states)
 
 
 @app.route("/users")
@@ -124,6 +134,7 @@ def create_rating(trail_id):
 @app.route("/parks_js")
 def test_page():
 
+    #state=request.args.get("state")
     states = crud.get_states_list()
     states.sort()
     return render_template("all_park_js.html", states=states)

@@ -8,12 +8,12 @@ const parks = ['Acadia National Park', 'Arches National Park', 'Badlands Nationa
 
     function showParks(evt){
         evt.preventDefult();
-        const state=document.querySelector('').value;
+        const state=document.querySelector('select[name="state]').value;
         fetch(`/parks_js?state=${state}`)
         .then(response => response.joson())
         .then(jsonData => {
-            document.querySelector('').innerHTML=jsonData;
+            document.querySelector('#park-container').innerHTML=jsonData;
         });
     }
-    document.querySelector('#park_form').addEventListener('submit', showParks)
+    document.querySelector('#state_form').addEventListener('submit', showParks)
 
