@@ -33,6 +33,6 @@ function initMap() {
       content: `<h1>${trailName}</h1>`,
     });
   
-    sfInfo.open(basicMap, trailMarker);
+    trailInfo.open(basicMap, trailMarker);
       
   }

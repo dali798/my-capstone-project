@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ trail.name }} - Details{% endblock %}
+
+{% block body %}
+
+<h3 id="trail_name">{{ trail.name }}</h3>
+
+    <p>
+        Park: {{ trail.park }}
+    </p>
+    <p>
+        Coordinates:
+    </p>
+    <span id="coords">
+        {{ trail.coordinates }}
+    </span>    
+
+
+    <main>
+        <section class="map">
+            <div id="map"></div>
+        </section>
+    </main>
+
+    <script src="/static/js/maps.js"></script>
+    <script
+        async 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7cj3xtdeGWbARbn1HGHG2gk6ZHNgTRHI&callback=initMap">
+    </script>       
+
+{% endblock %}

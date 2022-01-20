@@ -44,7 +44,15 @@ def show_trail(trail_id):
     # weather_data = response.json()
 
     return render_template("trails_detail.html", trail=trail)
+
     
+@app.route("/trails/<trail_id>/map")
+def show_trail_map(trail_id):
+    """Show map of a particular trail""" 
+
+    trail = crud.get_trail_by_id(trail_id)
+    return render_template("show_map.html", trail = trail)
+
 
 @app.route("/parks/<park>")
 def show_park_trails(park):
