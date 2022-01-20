@@ -35,7 +35,7 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-def create_trail(trail_id, name, park, city, state, popularity, length, elevation, difficulty, avg_rating, features, activities):
+def create_trail(trail_id, name, park, city, state, coordinates, popularity, length, elevation, difficulty, avg_rating, features, activities):
     """create and return a new trail"""
 
     trail = Trail(
@@ -44,6 +44,7 @@ def create_trail(trail_id, name, park, city, state, popularity, length, elevatio
         park = park,
         city = city,
         state = state,
+        coordinates = coordinates,
         popularity = popularity,
         length = length,
         elevation = elevation,

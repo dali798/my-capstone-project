@@ -27,7 +27,8 @@ class Trail(db.Model):
     name = db.Column(db.String)
     park = db.Column(db.String) 
     city = db.Column(db.String) 
-    state = db.Column(db.String) 
+    state = db.Column(db.String)
+    coordinates = db.Column(db.String) 
     popularity = db.Column(db.Float) 
     length = db.Column(db.Float) 
     elevation = db.Column(db.Float)
@@ -46,6 +47,7 @@ class Rating(db.Model):
 
     rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     score = db.Column(db.Integer)
+    comment = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     trail_id = db.Column(db.Integer, db.ForeignKey("trails.trail_id"))
     
@@ -57,7 +59,7 @@ class Rating(db.Model):
         return f"<Rating id={self.rating_id} rating={self.score}>"
 
 
-def connect_to_db(flask_app, db_uri="postgresql:///ratings", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///trails", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

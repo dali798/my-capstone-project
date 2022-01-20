@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db
 import crud
 import os
+import ast
 
 from jinja2 import StrictUndefined
 
@@ -29,6 +30,7 @@ def all_trails():
     """View all trails"""
 
     trails = crud.get_trails()
+    
     return render_template("all_trails.html", trails=trails)
 
 

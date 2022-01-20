@@ -3,8 +3,8 @@
 {% block title %}{{ trail.name }} - Details{% endblock %}
 
 {% block body %}
-<body>
-<h1>{{ trail.name }}</h1>
+
+<h1 id="trail_name">{{ trail.name }}</h1>
 
     <p>
         Park: {{ trail.park }}
@@ -14,6 +14,12 @@
     </p>
     <p>
         State: {{ trail.state }}
+    </p>
+    <p>
+        Coordinates:
+    </p>
+    <p id="coords">
+        {{ trail.coordinates }}
     </p>
     <p>
         Popularity: {{ trail.popularity }} 
@@ -67,5 +73,5 @@
         async 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7cj3xtdeGWbARbn1HGHG2gk6ZHNgTRHI&callback=initMap">
     </script>       
-</body>
+
 {% endblock %}

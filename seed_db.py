@@ -6,8 +6,8 @@ import model
 import server
 
 
-os.system("dropdb ratings")
-os.system("createdb ratings")
+os.system("dropdb trails")
+os.system("createdb trails")
 
 model.connect_to_db(server.app)
 model.db.create_all()
@@ -26,6 +26,7 @@ with open ("trails_data.csv", newline="") as f:
         park = trail["area_name"]
         city = trail["city_name"]
         state = trail["state_name"]
+        coordinates = trail["_geoloc"]
         popularity = trail["popularity"]
         length = trail["length"]
         elevation = trail["elevation_gain"]
@@ -36,7 +37,7 @@ with open ("trails_data.csv", newline="") as f:
         #print(name, " : ", park)
         #print(features)
         db_trail = crud.create_trail(
-            trail_id, name, park, city, state, popularity, length, elevation, difficulty, avg_rating, features, activities
+            trail_id, name, park, city, state, coordinates, popularity, length, elevation, difficulty, avg_rating, features, activities
             )
 
         trails_in_db.append(db_trail)

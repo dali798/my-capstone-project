@@ -3,17 +3,21 @@
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width">
-      <link rel="stylesheet" href="/static/css/base.css">
+      
       <title>
         {% block title %}{% endblock %}
       </title>
+      <link rel="stylesheet" href="/static/css/base.css">
+      <link rel="stylesheet" href="/static/css/maps.css">
+      {% block head %}{% endblock %}
     </head>
     <body>
       {% for msg in get_flashed_messages() %}
-        <p class="flash-msg">
-          {{msg}}
-        </p>
-      {% endfor %}
+      <p class="flash-msg">
+        {{msg}}
+      </p>
+    {% endfor %}  
+    
     {% block body %}{% endblock %}
 
     {% block afterbody %}{% endblock %}
