@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db
+import requests
 import crud
 import os
 import ast
@@ -14,7 +15,8 @@ app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 #app.jinja_env.auto_reload = True
 
-# API_KEY = os.environ["WEATHER_KEY"]
+os.system("source secrets.sh")
+API_KEY = os.environ["WEATHER_KEY"]
 
 
 
@@ -39,11 +41,22 @@ def show_trail(trail_id):
     """Show detail of a particular trail""" 
 
     trail = crud.get_trail_by_id(trail_id)
-    # url = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={trail.city}"
-    # response = requests.get(url)
-    # weather_data = response.json()
+    coords = ast.literal_eval(trail.coordinates)
+    lat = coords['lat']
+    lng = coords['lng']
+    url = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={lat},{lng}"
+    response = requests.get(url)
+    data = response.json()
+    current_weather = data['current']
+    temp = current_weather['temp_f']
+    condition = current_weather['condition']['text']
+    icon = current_weather['condition']['icon']
+    wind = current_weather['wind_mph']
+    humidity = current_weather['humidity']
+    vis = current_weather['vis_miles']
+    uv = current_weather['uv']
 
-    return render_template("trails_detail.html", trail=trail)
+    return render_template("trails_detail.html", trail=trail, temp=temp, condition=condition, icon=icon, wind=wind, humidity=humidity, vis=vis, uv=uv)
 
     
 @app.route("/trails/<trail_id>/map")

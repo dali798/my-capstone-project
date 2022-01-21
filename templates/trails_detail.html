@@ -45,6 +45,32 @@
     <p>
         Activities: {{ trail.activities }}
     </p>
+    <h4>Current Weather</h4>
+    <img src="{{ icon }}">
+    <section>
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>temp</th>
+                        <th>condition</th>
+                        <th>wind</th>
+                        <th>humidity</th>
+                        <th>vis</th>
+                        <th>uv</th>
+                    </tr>
+                    <tr>
+                        <td>{{temp}}</td>
+                        <td>{{condition}}</td>
+                        <td>{{wind}}</td>
+                        <td>{{humidity}}</td>
+                        <td>{{vis}}</td>
+                        <td>{{uv}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
 
     {% if session.get('user_email') %}
