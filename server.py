@@ -15,7 +15,7 @@ app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 #app.jinja_env.auto_reload = True
 
-os.system("source secrets.sh")
+#source secrets.sh
 API_KEY = os.environ["WEATHER_KEY"]
 
 
@@ -83,7 +83,7 @@ def show_park():
     parks.sort()
     states = crud.get_states_list()
     states.sort()
-    #state = request.args.get("state")
+    
     return render_template("all_parks.html", parks=parks, states=states)
 
 
@@ -156,11 +156,11 @@ def create_rating(trail_id):
 
 @app.route("/parks_js")
 def test_page():
-
-    #state=request.args.get("state")
-    states = crud.get_states_list()
-    states.sort()
-    return render_template("all_park_js.html", states=states)
+    parks_by_state = []
+    dic = crud.create_parks_dic()
+    state = request.args.get("state")
+            
+    return jsonify(parks_by_state)
 
 
 
