@@ -1,6 +1,6 @@
 """Server for national park hiking trails app."""
 
-from flask import Flask, render_template, request, flash, session, redirect
+from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import connect_to_db
 import requests
 import crud
@@ -155,12 +155,22 @@ def create_rating(trail_id):
     return redirect(f"/trails/{trail_id}")
 
 @app.route("/parks_js")
+def get_parks():
+    states = crud.get_states_list()
+    states.sort()
+
+    return render_template("all_park_js.html", states=states)
+
+
+@app.route("/parks.json", methods=["GET"])
 def test_page():
-    parks_by_state = []
+    
+    
     dic = crud.create_parks_dic()
     state = request.args.get("state")
-            
-    return jsonify(parks_by_state)
+    
+    return jsonify(dic)
+   
 
 
 

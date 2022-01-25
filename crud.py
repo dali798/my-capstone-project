@@ -74,13 +74,6 @@ def get_trail_by_id(trail_id):
 def get_parks_list():
     """Return all park by list"""
 
-    # with open ("trails_data.csv", newline="") as f:
-    #     trails_data = csv.DictReader(f)
-    #     parks_list=[]
-    #     for trail in trails_data:
-    #         park = trail["area_name"]
-    #         if park not in parks_list:
-    #             parks_list.append(park)
     parks_list = []
     trails = get_trails()
     for trail in trails:
@@ -93,13 +86,6 @@ def get_parks_list():
 def get_states_list():
     """Return all states by list"""
 
-    # with open ("trails_data.csv", newline="") as f:
-    #     trails_data = csv.DictReader(f)
-    #     states_list=[]
-    #     for trail in trails_data:
-    #         state = trail["state_name"]
-    #         if state not in states_list:
-    #             states_list.append(state)
     trails = get_trails()
     states_list = []
     for trail in trails:
@@ -126,14 +112,25 @@ def create_rating(user, trail, score):
 
     return rating
 
-def create_parks_dic():
+# def create_parks_dic():
 
+#     trails = get_trails()
+#     parks_dic = {}
+#     rev_dic = {}
+#     for trail in trails:
+#         parks_dic[trail.park]=trail.state
+
+def create_parks_dic():
     trails = get_trails()
     parks_dic = {}
     for trail in trails:
-        parks_dic[trail.park]=trail.state
+        parks_dic[trail.state] = []
 
-    return parks_dic
+    for trail in trails:         
+        if trail.park not in parks_dic[trail.state]:
+            parks_dic[trail.state].append(trail.park)
+    return (parks_dic)
+
 
     
 

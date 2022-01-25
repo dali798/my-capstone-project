@@ -5,9 +5,9 @@
 <body>
     <h3>Parks js Page</h3>
 
-    <form id="state_form">
+    <form id="state_form" method="get">
         Choose a state:
-        <select name = "state">
+        <select name = "state" id="state_name">
             <option value="">select a state</option>
             {% for state in states %}              
                 <option value="{{ state }}">{{ state }}</option>
