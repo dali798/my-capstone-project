@@ -4,10 +4,10 @@
 {% block body %}
 <h1>All Parks</h1>
 
-<form id="state_form">
+<form id="state_form" method="get">
   Choose a state:
-  <select name = "state">
-      <option value="">select a state</option>
+  <select name = "state" id="state_name">
+      <option value="all">All States</option>
       {% for state in states %}              
           <option value="{{ state }}">{{ state }}</option>
       {% endfor %}
@@ -15,7 +15,7 @@
   <input type="submit">
 </form>
 
-<ul>
+<ul id="park-container-1">
     {% for park in parks %}
       <li>
         <a href="/parks/{{ park }}">
@@ -24,4 +24,11 @@
       </li>
     {% endfor %}
   </ul>
+
+  <script src = "static/js/trails.js"></script>
+
+  
+  <ul id="park-container-2">
+  </ul>
+
 {% endblock %}

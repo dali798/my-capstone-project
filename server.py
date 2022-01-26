@@ -67,14 +67,6 @@ def show_trail_map(trail_id):
     return render_template("show_map.html", trail = trail)
 
 
-@app.route("/parks/<park>")
-def show_park_trails(park):
-    """Show all trails of a park"""
-
-    park_trails = crud.get_trails_by_park(park)
-    return render_template("all_park_trails.html", park=park, park_trails=park_trails)
-
-
 @app.route("/parks")
 def show_park():
     """Show all parks"""
@@ -85,6 +77,23 @@ def show_park():
     states.sort()
     
     return render_template("all_parks.html", parks=parks, states=states)
+
+
+@app.route("/parks.json", methods=["GET"])
+def test_page():
+    
+    dic = crud.create_parks_dic()
+    #state = request.args.get("state")
+    
+    return jsonify(dic)
+
+
+@app.route("/parks/<park>")
+def show_park_trails(park):
+    """Show all trails of a park"""
+
+    park_trails = crud.get_trails_by_park(park)
+    return render_template("all_park_trails.html", park=park, park_trails=park_trails)
 
 
 @app.route("/users")
@@ -154,22 +163,15 @@ def create_rating(trail_id):
 
     return redirect(f"/trails/{trail_id}")
 
-@app.route("/parks_js")
-def get_parks():
-    states = crud.get_states_list()
-    states.sort()
+# @app.route("/parks_js")
+# def get_parks():
+#     states = crud.get_states_list()
+#     states.sort()
 
-    return render_template("all_park_js.html", states=states)
+#     return render_template("all_park_js.html", states=states)
 
 
-@app.route("/parks.json", methods=["GET"])
-def test_page():
-    
-    
-    dic = crud.create_parks_dic()
-    state = request.args.get("state")
-    
-    return jsonify(dic)
+
    
 
 
