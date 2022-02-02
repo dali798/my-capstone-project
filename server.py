@@ -58,7 +58,44 @@ def show_trail(trail_id):
 
     return render_template("trails_detail.html", trail=trail, temp=temp, condition=condition, icon=icon, wind=wind, humidity=humidity, vis=vis, uv=uv)
 
-    
+
+# @app.route("/trails/<trail_id>/ratings", methods=["POST"])
+# def create_rating(trail_id):
+#     """Create a new rating for the trail"""
+
+    # log_in_email = session["user_email"]
+    # rating_score = request.form.get("rating")
+    # comment = request.form.get("comment")
+
+    # if log_in_email is None:
+    #     flash("Please log in to rate a trail.")
+    # elif not rating_score:
+    #     flash("Please select a score for your rating.")
+    # else:
+    #     user = crud.get_user_by_email(log_in_email)
+    #     trail = crud.get_trail_by_id(trail_id)
+
+    #     crud.create_rating(user, trail, int(rating_score), comment)
+    #     flash(f"{user.first_name}, you rate this trail {rating_score} out of 5.0!")
+
+    # return redirect(f"/trails/{trail_id}")
+
+
+@app.route("/rating.json", methods=['POST'])
+def show_ratings():
+
+    log_in_email = session["user_email"]
+    rating = request.json['rating']
+    comment = request.json['comment']
+    trail_id = request.json['trail_id']
+
+    user = crud.get_user_by_email(log_in_email)
+    trail = crud.get_trail_by_id(trail_id)
+    crud.create_rating(user, trail, int(rating), comment)
+
+    return jsonify({'rating':rating, 'comment':comment, 'trail_id':trail_id})
+
+
 @app.route("/trails/<trail_id>/map")
 def show_trail_map(trail_id):
     """Show map of a particular trail""" 
@@ -142,33 +179,19 @@ def log_in():
     return redirect("/")
 
 
-@app.route("/trails/<trail_id>/ratings", methods=["POST"])
-def create_rating(trail_id):
-    """Create a new rating for the trail"""
-
-    log_in_email = session["user_email"]
-    rating_score = request.form.get("rating")
-
+@app.route("/user_profile")
+def show_profile():
+    log_in_email = session.get('user_email')
 
     if log_in_email is None:
-        flash("Please log in to rate a trail.")
-    elif not rating_score:
-        flash("Please select a score for your rating.")
+        flash("Please log in to see user profile.")
+        return redirect("/") 
+        
     else:
         user = crud.get_user_by_email(log_in_email)
-        trail = crud.get_trail_by_id(trail_id)
+        ratings = crud.get_raings_by_userid(user.user_id)
 
-        crud.create_rating(user, trail, int(rating_score))
-        flash(f"{user.first_name}, you rate this trail {rating_score} out of 5.0!")
-
-    return redirect(f"/trails/{trail_id}")
-
-# @app.route("/parks_js")
-# def get_parks():
-#     states = crud.get_states_list()
-#     states.sort()
-
-#     return render_template("all_park_js.html", states=states)
+        return render_template("user_profile.html", user=user, ratings=ratings)  
 
 
 

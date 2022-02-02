@@ -4,24 +4,20 @@
 
 {% block body %}
 
-<h3 id="trail_name">{{ trail.name }}</h3>
+<main>
+    <section class="map">
+        <div id="map"></div>
+    </section>
+</main>
 
+<p id="trail_name">{{ trail.name }}</p>
     <p>
         Park: {{ trail.park }}
     </p>
     <p>
-        Coordinates:
+        Coordinates:<span id="coords">{{ trail.coordinates }}</span>  
     </p>
-    <span id="coords">
-        {{ trail.coordinates }}
-    </span>    
-
-
-    <main>
-        <section class="map">
-            <div id="map"></div>
-        </section>
-    </main>
+          
 
     <script src="/static/js/maps.js"></script>
     <script

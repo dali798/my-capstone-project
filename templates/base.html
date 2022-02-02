@@ -7,11 +7,29 @@
       <title>
         {% block title %}{% endblock %}
       </title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
       <link rel="stylesheet" href="/static/css/base.css">
-      <link rel="stylesheet" href="/static/css/maps.css">
+      
       {% block head %}{% endblock %}
     </head>
     <body>
+      <nav class="navbar navbar-light bg-light navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar
+            </a>
+            <div class="collapse navbar-collapse">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="/">Homepage</a>
+                    <a class="nav-link" href="/trails">All Trails</a>
+                    <a class="nav-link" href="/parks">All Parks</a>
+                    <a class="nav-link" href="/user_profile">User Profile</a>
+                    <a class="nav-link" href="/users">All Users</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
       {% for msg in get_flashed_messages() %}
       <p class="flash-msg">
         {{msg}}
@@ -21,5 +39,10 @@
     {% block body %}{% endblock %}
 
     {% block afterbody %}{% endblock %}
-    </body>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+  crossorigin="anonymous">
+  </script>
+  </body>
 </html>

@@ -9,3 +9,13 @@ html, body {
 body {
   font-family: 'Source Sans Pro', sans-serif;
 }
+
+img.map{
+  width: 3em;
+  height: 2em;
+}
+
+.map, #map {
+  width: 1200px;
+  height: 600px;
+}

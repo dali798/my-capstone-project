@@ -1,5 +1,6 @@
 import csv
 import os
+from random import choice, randint
 
 import crud
 import model
@@ -41,3 +42,19 @@ with open ("trails_data.csv", newline="") as f:
             )
 
         trails_in_db.append(db_trail)
+
+        # Create 10 users; each user will make 10 ratings
+        # for n in range(1, 11):
+        #     first_name = f"Fname{n}"
+        #     last_name = f"Lname{n}"
+        #     email = f"user{n}@test.com"
+        #     password = "test"
+
+        #     user = crud.create_user(first_name, last_name, email, password)
+
+        #     for i in range(10):
+        #         random_trail = choice(trails_in_db)
+        #         score = randint(1,5)
+        #         comment = f"This is my {i}th comment."
+
+        #         crud.create_rating(user, random_trail, score, comment)

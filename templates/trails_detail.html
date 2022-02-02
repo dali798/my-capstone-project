@@ -1,20 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}{{ trail.name }} - Details{% endblock %}
-
+{% block head %}
+{% endblock head %}
 {% block body %}
-<header>
-    <nav>
-    <section id="links-left">
-        <a href="/trails/{{ trail.trail_id }}/map">View Map</a>
-    </section>
-    <section id="links-right">
-      <a href="/">home</a>
-    </section>
-  </nav>
-</header>
 
-<h3 id="trail_name">{{ trail.name }}</h3>  
+        
+
+<h3 id="trail_name">{{ trail.name }}</h3>
+    <p id="id">{{ trail.trail_id }}</p>
     <p>
         Park: {{ trail.park }}
     </p>
@@ -45,6 +39,11 @@
     <p>
         Activities: {{ trail.activities }}
     </p>
+
+    <p>View Map:     
+        <a href="/trails/{{ trail.trail_id }}/map"><img class="map" src="/static/img/map.png"></a>
+    </p>  
+
     <h4>Current Weather</h4>
     <img src="{{ icon }}">
     <section>
@@ -72,24 +71,32 @@
         </div>
     </section>
 
-
     {% if session.get('user_email') %}
     
     <h2>Rate this trail</h2>
-    <form id= "rat" action="/trails/{{trail.trail_id}}/ratings" method="POST">
+    <form id= "rating_form" method="POST">
         <p>
             Rating:
-            <select name="rating">
+            <select name="rating" id="rating">
                 <option value="">Select rating</option>
                 {% for num in range(6) %}
                     <option value="{{ num }}">{{ num }}</option>
                 {% endfor %}
             </select>
         </p>
+        <p>
+            Comment:
+            <input type="text" name="comment" id="comment">
+        </p>
         <p><input type="submit"></p>
     </form>
     
     {% endif %}
-    
+
+    <br>
+<div>
+    <ul id="user_rating"></ul>
+</div>
+<script src="/static/js/test_submit.js"></script>
 
 {% endblock %}

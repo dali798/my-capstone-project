@@ -36,3 +36,5 @@ function initMap() {
     trailInfo.open(basicMap, trailMarker);
       
   }
+
+  

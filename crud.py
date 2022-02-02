@@ -102,24 +102,6 @@ def get_trails_by_park(park):
 
 
 
-def create_rating(user, trail, score):
-    """Create and return a new rating"""
-
-    rating = Rating(user = user, trail = trail, score = score)
-
-    db.session.add(rating)
-    db.session.commit()
-
-    return rating
-
-# def create_parks_dic():
-
-#     trails = get_trails()
-#     parks_dic = {}
-#     rev_dic = {}
-#     for trail in trails:
-#         parks_dic[trail.park]=trail.state
-
 def create_parks_dic():
     trails = get_trails()
     parks_dic = {}
@@ -130,6 +112,27 @@ def create_parks_dic():
         if trail.park not in parks_dic[trail.state]:
             parks_dic[trail.state].append(trail.park)
     return (parks_dic)
+
+
+
+def create_rating(user, trail, score, comment):
+    """Create and return a new rating"""
+
+    rating = Rating(user = user, trail = trail, score = score, comment = comment)
+
+    db.session.add(rating)
+    db.session.commit()
+
+    return rating
+
+def get_ratings():
+    """return all users"""
+    return Rating.query.all()
+
+
+def get_raings_by_userid(user_id):
+    """return ratings by user"""
+    return Rating.query.filter(Rating.user_id==user_id).all()
 
 
     
