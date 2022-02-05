@@ -41,11 +41,11 @@
     </p>
 
     <p>View Map:     
-        <a href="/trails/{{ trail.trail_id }}/map"><img class="map" src="/static/img/map.png"></a>
+        <a href="/trails/{{ trail.trail_id }}/map"><img alt="google_map" class="map" src="/static/img/map.png"></a>
     </p>  
 
     <h4>Current Weather</h4>
-    <img src="{{ icon }}">
+    <img alt="weather_img" src="{{ icon }}">
     <section>
         <div>
             <table>
@@ -70,13 +70,14 @@
             </table>
         </div>
     </section>
+    <br>
 
     {% if session.get('user_email') %}
     
-    <h2>Rate this trail</h2>
+    <h4>Rate this trail</h4>
     <form id= "rating_form" method="POST">
         <p>
-            Rating:
+            <label for="rating">Rating:</label>
             <select name="rating" id="rating">
                 <option value="">Select rating</option>
                 {% for num in range(6) %}
@@ -85,9 +86,9 @@
             </select>
         </p>
         <p>
-            Comment:
-            <input type="text" name="comment" id="comment">
-        </p>
+        <label>Comment:</lable>
+        <input type="text" name="comment" id="comment">
+        </p>        
         <p><input type="submit"></p>
     </form>
     

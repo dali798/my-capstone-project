@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
+
 {% block title %}User Profile{% endblock %}
+
+{% block head %}
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+</script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script
+{% endblock head %}
 
 {% block body %}
 {% if session.get('user_email') %}
@@ -12,6 +20,9 @@
         User email: {{ user.email }}
     </h5>
       <br>
+      <div id="root"></div>
+      <script src = "/static/js/App.jsx" type="text/jsx"></script>
+      <h5>Comment History</h5>
         <div>
         {% for rating in ratings %}
             <p>Trail Name: {{ rating.trail.name }}</p>

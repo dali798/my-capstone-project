@@ -171,12 +171,12 @@ def log_in():
     user = crud.get_user_by_email(email)
     if not user or user.password != password:
         flash("The email or password you entered is not correct.")
+        return redirect("/")
     else:
         #Storing the user's email in session
         session["user_email"] = user.email
         flash(f"Welcome back, {user.first_name}!")
-
-    return redirect("/")
+        return redirect("/user_profile")
 
 
 @app.route("/user_profile")
