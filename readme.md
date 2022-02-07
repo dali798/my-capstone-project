@@ -4,9 +4,10 @@
    National Park Hiking Trail is a full stack web app that can help users to plan their national parks trips by providing detail hiking trails information of 60 national parks across US.
 
 ## Technologies
-
+  
   * Python
   * Flask
+  * PostgreSQL
   * SQLAlchemy
   * Jinja 2
   * HTML
@@ -14,6 +15,7 @@
   * Javascript
   * AJAX
   * JSON
+  * React
   * Bootstrap
   * Python unittest module
   * Google Map API
@@ -21,7 +23,7 @@
 
   ## Features
 
-  * The app can show trails by trail name or by park, with AJAX to implement filter by state function for the national parks
+  * the app can show trail information by trail name or by park, with AJAX to implement a filter function to filter the parks by state
 
   * integrated API to show google map and current weather conditions of a trail
 
