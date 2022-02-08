@@ -2,15 +2,20 @@
 {% block title %}All Trails{% endblock %}
 
 {% block body %}
+<section class="container-2">
 <h1>All Trails</h1>
 
 <ul>
     {% for trail in trails %}
       <li>
+        <lable>
           <a href="/trails/{{ trail.trail_id }}">
           {{ trail.name }}
           </a>
+        </lable>
       </li>
     {% endfor %}
   </ul>
+
+</section>
 {% endblock %}

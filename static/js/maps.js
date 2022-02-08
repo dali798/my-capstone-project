@@ -1,9 +1,12 @@
 'use strict';
 
 function initMap() {
+    
+    document.querySelector('#coords').style.display = 'none';
+    document.querySelector('#trail_name').style.display = 'none';
+    document.querySelector('#park').style.display = 'none';
 
     const coords = document.querySelector('#coords').innerText;
-    document.querySelector('#coords').style.display = 'none';
     const trailLst = coords.split(',');
     const trailLst1 = trailLst[0].split(':');
     const trailLat = parseFloat(trailLst1[1]);

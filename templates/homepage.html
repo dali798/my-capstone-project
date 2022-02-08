@@ -3,43 +3,57 @@
 {% block title %}National Park Hiking Trail{% endblock %}
 
 {% block body %}
+<section class="container"> 
+  <div class="row">
+    <div class="col-6">
+      <div class="card" style="width: 20rem;">
+        <div class="card-body">
+        <h1 class = "card-title">Welcome!</h1>
+        <h2 class="card-title">Log in</h2>
+        <form action="/login" method="POST">
+          <p>
+            Email <input type="text" name="email">
+          </p>
+          <p>
+            Password <input type="text" name="password">
+          </p>
+          <p>
+            <input type="submit">
+          </p>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <p>
+            If you do not have an acount, please sign up.
+          </p>
+          <h3 class="card-title">Create an Account</h3>
 
-  <h1>Welcome!</h1>
-
-  <h2>Log in</h2>
-
-  <form action="/login" method="POST">
-    <p>
-        Email <input type="text" name="email">
-    </p>
-    <p>
-        Password <input type="text" name="password">
-    </p>
-    <p>
-        <input type="submit">
-    </p>
-  </form>
-  <br>
-  <p>
-    If you do not have an acount, please sign up.
-  </p>
-  <h3>Create an Account</h3>
-
-  <form action="/users" method="POST">
-    <p>
-        Email <input type="text" name="email">
-    </p>
-    <p>
-        First Name <input type="text" name="first_name">
-    </p>
-    <p>
-        Last name <input type="text" name="last_name">
-    </p>
-    <p>
-        Password <input type="text" name="password">
-    </p>
-    <p>
-        <input type="submit">
-    </p>        
-  </form>
+          <form action="/users" method="POST">
+            <p>
+                Email <input type="text" name="email">
+            </p>
+            <p>
+                First Name <input type="text" name="first_name">
+            </p>
+            <p>
+                Last name <input type="text" name="last_name">
+            </p>
+            <p>
+                Password <input type="text" name="password">
+            </p>
+            <p>
+                <input type="submit">
+            </p>        
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
