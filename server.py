@@ -11,7 +11,7 @@ from jinja2 import StrictUndefined
 
 app = Flask(__name__)
 # Required to use Flask sessions
-app.secret_key = "dev"
+app.secret_key = "dev fghjfjdgfjhhdffghdfhg"
 app.jinja_env.undefined = StrictUndefined
 #app.jinja_env.auto_reload = True
 
@@ -98,7 +98,6 @@ def show_park():
 def test_page():
     
     dic = crud.create_parks_dic()
-    #state = request.args.get("state")
     
     return jsonify(dic)
 
@@ -181,5 +180,7 @@ if __name__ == "__main__":
     connect_to_db(app)
     app.run(
         host="0.0.0.0",
-        use_debugger=True,
+        debug=True,
     )
+
+    # debug=True,

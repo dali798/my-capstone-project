@@ -16,7 +16,7 @@ class Todo extends React.Component {
     render(){
         return(
             <div className="list">
-              <h3> Hiking Checklist</h3>
+              <h5> Hiking Checklist</h5>
               <input type="text" ref={(ip) => {this.newText = ip}}/>
               <button onClick={this.save.bind(this)}>Save
               </button>          

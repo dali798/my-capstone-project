@@ -2,33 +2,36 @@
 {% block title %}All Parks{% endblock %}
 
 {% block body %}
-<h1>All Parks</h1>
 
-<form id="state_form" method="get">
-  Choose a state:
-  <select name = "state" id="state_name">
-      <option value="all">All States</option>
-      {% for state in states %}              
-          <option value="{{ state }}">{{ state }}</option>
-      {% endfor %}
-  </select>
-  <input type="submit">
-</form>
+<div class="card">
+  <div class="car-body">
+    <h1 class="card-title">All Parks</h1>
+    <form id="state_form" method="get">
+      Choose a state:
+      <select name = "state" id="state_name">
+          <option value="all">All States</option>
+          {% for state in states %}              
+              <option value="{{ state }}">{{ state }}</option>
+          {% endfor %}
+      </select>
+      <input type="submit">
+    </form>
 
-<ul id="park-container-1">
-    {% for park in parks %}
-      <li>
-        <a href="/parks/{{ park }}">
-          {{ park }}
-      </a>
-      </li>
-    {% endfor %}
-  </ul>
+    <ul class="list-group list-group-flush" id="park-container-1">
+        {% for park in parks %}
+          <li class="list-group-item">
+            <a href="/parks/{{ park }}">
+              {{ park }}
+          </a>
+          </li>
+        {% endfor %}
+      </ul>    
 
-  <script src = "static/js/trails.js"></script>
+      <script src = "static/js/trails.js"></script>
+      
+      <ul class="list-group list-group-flush" id="park-container-2">
+      </ul>
 
-  
-  <ul id="park-container-2">
-  </ul>
-
+    </div>
+  </div>
 {% endblock %}

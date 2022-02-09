@@ -1,17 +1,28 @@
 /* * { box-sizing: border-box; } */
-
-/* html, body {
+/* */
+html, body {
   margin: 0;
   width: 100%;
   height: 100%;
-} */
+} 
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.container {
+.homepage-background {
   background: no-repeat center/cover url('/static/img/Yosemite-National-Park-River.jpg');
+  height: 100%
+}
+
+.trail-background {
+  background: no-repeat center/cover url('/static/img/mountains.jpg');
+  height: 100%
+}
+
+.userprofile-background {
+  background: no-repeat center/cover url('/static/img/seamless-pattern.jpg');
+  height: 100%
 }
 
 .card {
@@ -28,3 +39,7 @@ img.map{
   width: 1700px;
   height: 800px;
 }
+
+/* .mystery-div {
+  height: 100%;
+} */

@@ -2,16 +2,17 @@
 {% block title %}All Park Trails{% endblock %}
 
 {% block body %}
-<h1>{{park}} Trails</h1>
+<div class="card">
+  <h5 class="card-header">{{park}}</h5>
 
-<ul>
+  <ul class="list-group list-group-flush">
     {% for trail in park_trails %}
-      <li>
+      <li class="list-group-item">
         <a href="/trails/{{ trail.trail_id }}">
           {{ trail.name }}
         </a>
       </li>
     {% endfor %}
   </ul>
-
+</div>
 {% endblock %}

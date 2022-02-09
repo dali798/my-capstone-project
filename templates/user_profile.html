@@ -6,31 +6,42 @@
 <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
 </script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
 {% endblock head %}
 
 {% block body %}
 {% if session.get('user_email') %}
-    <h1>User Profile</h1>
-    <br>
-    <h5>
-        User name: {{ user.first_name }} {{ user.last_name }}
-    </h5>
-    <h5>
-        User email: {{ user.email }}
-    </h5>
-      <br>
-      <div id="root"></div>
-      <script src = "/static/js/App.jsx" type="text/jsx"></script>
-      <h5>Comment History</h5>
-        <div>
-        {% for rating in ratings %}
-            <p>Trail Name: {{ rating.trail.name }}</p>
-            <p>Park: {{ rating.trail.park }}</p>
-            <p>Rating: {{ rating.score }}<p>
-            <p>Comment: {{ rating.comment }}</p>
-            <br>
-        {% endfor %}
+<section class="container-fluid userprofile-background">  
+    <div class="card mx-auto mb-5" style="width: 80rem;">
+      <div class="card-body">
+        <h3 class="card-title">User Profile</h3>        
+            <h6 class="card-text">
+                User name: {{ user.first_name }} {{ user.last_name }}
+            </h6>
+            <h6 class="card-text">
+                User email: {{ user.email }}
+            </h6>
         </div>
+    </div>
+
+    <div class="card mx-auto mb-5" style="width: 80rem;">
+        <div class="card-body">
+            <div id="root"></div>
+            <script src = "/static/js/App.jsx" type="text/jsx"></script>
+        </div>
+    </div>
+
+    <div class="card mx-auto mb-5" style="width: 80rem;">
+        <div class="card-header">Comment History</div>                            
+            {% for rating in ratings %}
+            <ul class="list-group list-group-flush">
+                <li class="card-text">Trail Name: {{ rating.trail.name }}</li>
+                <li class="card-text">Park: {{ rating.trail.park }}</li>
+                <li class="card-text">Rating: {{ rating.score }}</li>
+                <li class="card-text">Comment: {{ rating.comment }}</li>
+            </ul>
+            {% endfor %}                
+    </div>
+</section> 
 {% endif %}
 {% endblock %}

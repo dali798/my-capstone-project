@@ -3,101 +3,112 @@
 {% block title %}{{ trail.name }} - Details{% endblock %}
 {% block head %}
 {% endblock head %}
+
 {% block body %}
 
-        
+<section class="container-fluid trail-background">     
 
-<h3 id="trail_name">{{ trail.name }}</h3>
-    <p id="id">{{ trail.trail_id }}</p>
-    <p>
-        Park: {{ trail.park }}
-    </p>
-    <p>
-        City: {{ trail.city }}
-    </p>
-    <p>
-        State: {{ trail.state }}
-    </p>
-    <p>
-        Popularity: {{ trail.popularity }} 
-    </p>
-    <p>
-        Length: {{ trail.length }}
-    </p>
-    <p>
-        Evlevation: {{ trail.elevation }}
-    </p>
-    <p>
-        Difficulty: {{ trail.difficulty }}
-    </p>
-    <p>
-        Average Rating: {{ trail.avg_rating }} 
-    </p>
-    <p>
-        Features: {{ trail.features }}
-    </p>
-    <p>
-        Activities: {{ trail.activities }}
-    </p>
+    <div class="card" style="width: 32rem;">
+        <div class="card-body">
+            <h3 class="card-title" id="trail_name">{{ trail.name }}</h3>
+            <p class="card-text" id="id">{{ trail.trail_id }}</p>
+            <p class="card-text">
+                Park: {{ trail.park }}
+            </p>
+            <p class="card-text">
+                City: {{ trail.city }}
+            </p>
+            <p class="card-text">
+                State: {{ trail.state }}
+            </p>
+            <p class="card-text">
+                Popularity: {{ trail.popularity }} 
+            </p>
+            <p class="card-text">
+                Length: {{ trail.length }}
+            </p>
+            <p class="card-text">
+                Evlevation: {{ trail.elevation }}
+            </p>
+            <p class="card-text">
+                Difficulty: {{ trail.difficulty }}
+            </p>
+            <p>
+                Average Rating: {{ trail.avg_rating }} 
+            </p>
+            <p class="card-text">
+                Features: {{ trail.features }}
+            </p>
+            <p class="card-text">
+                Activities: {{ trail.activities }}
+            </p>
 
-    <p>View Map:     
-        <a href="/trails/{{ trail.trail_id }}/map"><img alt="google_map" class="map" src="/static/img/map.png"></a>
-    </p>  
-
-    <h4>Current Weather</h4>
-    <img alt="weather_img" src="{{ icon }}">
-    <section>
-        <div>
-            <table>
-                <tbody>
-                    <tr>
-                        <th>temp</th>
-                        <th>condition</th>
-                        <th>wind</th>
-                        <th>humidity</th>
-                        <th>vis</th>
-                        <th>uv</th>
-                    </tr>
-                    <tr>
-                        <td>{{temp}}</td>
-                        <td>{{condition}}</td>
-                        <td>{{wind}}</td>
-                        <td>{{humidity}}</td>
-                        <td>{{vis}}</td>
-                        <td>{{uv}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <p class="card-text">View Map:     
+                <a href="/trails/{{ trail.trail_id }}/map" class="card-link"><img alt="google_map" class="map" src="/static/img/map.png"></a>
+            </p>
         </div>
+    </div>
+    <div class="card" style="width: 32rem;">
+        <div class="card-body">    
+        <h4>Current Weather</h4>
+        <img alt="weather_img" src="{{ icon }}">
+        <section>
+            <div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>temp</th>
+                            <th>condition</th>
+                            <th>wind</th>
+                            <th>humidity</th>
+                            <th>vis</th>
+                            <th>uv</th>
+                        </tr>
+                        <tr>
+                            <td>{{temp}}</td>
+                            <td>{{condition}}</td>
+                            <td>{{wind}}</td>
+                            <td>{{humidity}}</td>
+                            <td>{{vis}}</td>
+                            <td>{{uv}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        </div>
+    </div>
+
+        {% if session.get('user_email') %}
+        <div class="card" style="width: 32rem;">
+            <div class="card-body">
+                <h4 class="card-title">Rate this trail</h4>
+                <form id= "rating_form" method="POST">
+                    <p>
+                        <label for="rating">Rating:</label>
+                        <select name="rating" id="rating">
+                            <option value="">Select rating</option>
+                            {% for num in range(6) %}
+                                <option value="{{ num }}">{{ num }}</option>
+                            {% endfor %}
+                        </select>
+                    </p>
+                    <p>
+                    <label>Comment:</lable>
+                    <input type="text" name="comment" id="comment">
+                    </p>        
+                    <p><input type="submit"></p>
+                </form>
+            </div>
+        </div>
+
+        {% endif %}
+
+        <div>
+        <ul id="user_rating"></ul>
+        </div>
+        <script src="/static/js/test_submit.js"></script>
+
     </section>
-    <br>
-
-    {% if session.get('user_email') %}
-    
-    <h4>Rate this trail</h4>
-    <form id= "rating_form" method="POST">
-        <p>
-            <label for="rating">Rating:</label>
-            <select name="rating" id="rating">
-                <option value="">Select rating</option>
-                {% for num in range(6) %}
-                    <option value="{{ num }}">{{ num }}</option>
-                {% endfor %}
-            </select>
-        </p>
-        <p>
-        <label>Comment:</lable>
-        <input type="text" name="comment" id="comment">
-        </p>        
-        <p><input type="submit"></p>
-    </form>
-    
-    {% endif %}
-
-    <br>
-<div>
-    <ul id="user_rating"></ul>
-</div>
-<script src="/static/js/test_submit.js"></script>
 
 {% endblock %}
