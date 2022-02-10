@@ -9,73 +9,72 @@
 <section class="container-fluid trail-background">     
 
     <div class="card" style="width: 32rem;">
-        <div class="card-body">
-            <h3 class="card-title" id="trail_name">{{ trail.name }}</h3>
-            <p class="card-text" id="id">{{ trail.trail_id }}</p>
-            <p class="card-text">
-                Park: {{ trail.park }}
-            </p>
-            <p class="card-text">
-                City: {{ trail.city }}
-            </p>
-            <p class="card-text">
-                State: {{ trail.state }}
-            </p>
-            <p class="card-text">
-                Popularity: {{ trail.popularity }} 
-            </p>
-            <p class="card-text">
-                Length: {{ trail.length }}
-            </p>
-            <p class="card-text">
-                Evlevation: {{ trail.elevation }}
-            </p>
-            <p class="card-text">
-                Difficulty: {{ trail.difficulty }}
-            </p>
-            <p>
-                Average Rating: {{ trail.avg_rating }} 
-            </p>
-            <p class="card-text">
-                Features: {{ trail.features }}
-            </p>
-            <p class="card-text">
-                Activities: {{ trail.activities }}
-            </p>
+        <h3 class="card-header" id="trail_name">{{ trail.name }}</h3>
+            <div class="card-body">            
+                <p class="card-text" id="id">{{ trail.trail_id }}</p>
+                <p class="card-text">
+                    Park: {{ trail.park }}
+                </p>
+                <p class="card-text">
+                    City: {{ trail.city }}
+                </p>
+                <p class="card-text">
+                    State: {{ trail.state }}
+                </p>
+                <p class="card-text">
+                    Popularity: {{ trail.popularity }} 
+                </p>
+                <p class="card-text">
+                    Length: {{ trail.length }}
+                </p>
+                <p class="card-text">
+                    Evlevation: {{ trail.elevation }}
+                </p>
+                <p class="card-text">
+                    Difficulty: {{ trail.difficulty }}
+                </p>
+                <p>
+                    Average Rating: {{ trail.avg_rating }} 
+                </p>
+                <p class="card-text">
+                    Features: {{ trail.features }}
+                </p>
+                <p class="card-text">
+                    Activities: {{ trail.activities }}
+                </p>
 
-            <p class="card-text">View Map:     
-                <a href="/trails/{{ trail.trail_id }}/map" class="card-link"><img alt="google_map" class="map" src="/static/img/map.png"></a>
-            </p>
+                <p class="card-text">View Map:     
+                    <a href="/trails/{{ trail.trail_id }}/map" class="card-link"><img alt="google_map" class="map" src="/static/img/map.png"></a>
+                </p>
         </div>
     </div>
     <div class="card" style="width: 32rem;">
         <div class="card-body">    
-        <h4>Current Weather</h4>
+        <h4 class="card-title">Current Weather</h4>
         <img alt="weather_img" src="{{ icon }}">
-        <section>
-            <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>temp</th>
-                            <th>condition</th>
-                            <th>wind</th>
-                            <th>humidity</th>
-                            <th>vis</th>
-                            <th>uv</th>
-                        </tr>
-                        <tr>
-                            <td>{{temp}}</td>
-                            <td>{{condition}}</td>
-                            <td>{{wind}}</td>
-                            <td>{{humidity}}</td>
-                            <td>{{vis}}</td>
-                            <td>{{uv}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>temp</th>
+                        <th>condition</th>
+                        <th>wind</th>
+                        <th>humidity</th>
+                        <th>vis</th>
+                        <th>uv</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{temp}}</td>
+                        <td>{{condition}}</td>
+                        <td>{{wind}}</td>
+                        <td>{{humidity}}</td>
+                        <td>{{vis}}</td>
+                        <td>{{uv}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -100,7 +99,7 @@
                     <p><input type="submit"></p>
                 </form>
             </div>
-        </div>
+        
 
         {% endif %}
 
@@ -108,7 +107,7 @@
         <ul id="user_rating"></ul>
         </div>
         <script src="/static/js/test_submit.js"></script>
-
+        </div>
     </section>
 
 {% endblock %}

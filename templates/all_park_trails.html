@@ -2,9 +2,10 @@
 {% block title %}All Park Trails{% endblock %}
 
 {% block body %}
+
 <div class="card">
   <h5 class="card-header">{{park}}</h5>
-
+  <div class="card-body">
   <ul class="list-group list-group-flush">
     {% for trail in park_trails %}
       <li class="list-group-item">
@@ -15,4 +16,6 @@
     {% endfor %}
   </ul>
 </div>
+</div>
+
 {% endblock %}

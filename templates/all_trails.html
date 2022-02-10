@@ -2,10 +2,9 @@
 {% block title %}All Trails{% endblock %}
 
 {% block body %}
-<section class="container-2">
-  <div class="card">
-    <div calls="card-body">
-      <h1 class="card-title">All Trails</h1>
+<section class="container-fluid trails-background">
+  <div class="card mx-auto">
+    <h3 class="card-header">All Trails</h3>
       <ul class="list-group list-group-flush">
         {% for trail in trails %}
           <li class="list-group-item">
@@ -14,8 +13,7 @@
               </a>
           </li>
         {% endfor %}
-      </ul>
+      </ul>    
     </div>
-</div>
 </section>
 {% endblock %}

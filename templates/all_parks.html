@@ -3,35 +3,38 @@
 
 {% block body %}
 
-<div class="card">
-  <div class="car-body">
-    <h1 class="card-title">All Parks</h1>
-    <form id="state_form" method="get">
-      Choose a state:
-      <select name = "state" id="state_name">
-          <option value="all">All States</option>
-          {% for state in states %}              
-              <option value="{{ state }}">{{ state }}</option>
+<section class="container-fluid parks-background">
+  <div class="card">
+    <div class="car-body">
+      <h3 class="card-header">All Parks</h3>
+      <form id="state_form" method="get">
+        Choose a state:
+        <select name = "state" id="state_name">
+            <option value="all">All States</option>
+            {% for state in states %}              
+                <option value="{{ state }}">{{ state }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+      </form>
+
+      <ul class="list-group list-group-flush" id="park-container-1">
+          {% for park in parks %}
+            <li class="list-group-item">
+              <a href="/parks/{{ park }}">
+                {{ park }}
+            </a>
+            </li>
           {% endfor %}
-      </select>
-      <input type="submit">
-    </form>
+        </ul>    
 
-    <ul class="list-group list-group-flush" id="park-container-1">
-        {% for park in parks %}
-          <li class="list-group-item">
-            <a href="/parks/{{ park }}">
-              {{ park }}
-          </a>
-          </li>
-        {% endfor %}
-      </ul>    
-
-      <script src = "static/js/trails.js"></script>
-      
-      <ul class="list-group list-group-flush" id="park-container-2">
-      </ul>
-
+        <script src = "static/js/trails.js"></script>
+        
+        <ul class="list-group list-group-flush" id="park-container-2">
+        </ul>
+        <img class="card-img-bottom" src="/static/img/lavender.jpg" alt="img">
+      </div>
     </div>
-  </div>
+    
+</section>
 {% endblock %}

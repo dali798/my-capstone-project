@@ -17,12 +17,18 @@ body {
 
 .trail-background {
   background: no-repeat center/cover url('/static/img/mountains.jpg');
-  height: 100%
 }
 
 .userprofile-background {
-  background: no-repeat center/cover url('/static/img/seamless-pattern.jpg');
-  height: 100%
+  background: no-repeat center/cover url('/static/img/autumn-leaves.jpg');
+}
+
+.trails-background {
+  background-color: #e6eec7;
+}
+
+.parks-background {
+  background-color: #e0dae2;
 }
 
 .card {
@@ -38,6 +44,11 @@ img.map{
 .map, #map {
   width: 1700px;
   height: 800px;
+}
+
+.card-title {
+  font-style: italic;
+  color: #627250;
 }
 
 /* .mystery-div {
