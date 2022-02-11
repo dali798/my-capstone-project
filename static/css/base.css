@@ -36,6 +36,10 @@ body {
   background-color:#f8f8ef;
 }
 
+.flash-msg {
+  background-color: #f0f0df;
+}
+
 img.map{
   width: 3em;
   height: 2em;
@@ -49,6 +53,11 @@ img.map{
 .card-title {
   font-style: italic;
   color: #627250;
+}
+
+.card-header {
+  font-style: italic;
+  color: #59644c;
 }
 
 /* .mystery-div {

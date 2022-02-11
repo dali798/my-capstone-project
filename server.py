@@ -170,7 +170,10 @@ def show_profile():
 
         return render_template("user_profile.html", user=user, ratings=ratings)  
 
-
+@app.route("/logout")
+def log_out():
+    session.pop("user_email", None)
+    return redirect("/")
 
    
 

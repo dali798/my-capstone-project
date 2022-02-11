@@ -12,9 +12,10 @@
 {% block body %}
 {% if session.get('user_email') %}
 <section class="container-fluid userprofile-background">  
-    <div class="card mx-auto mb-5" style="width: 80rem;">
-      <div class="card-body">
-        <h3 class="card-title">User Profile</h3>        
+    <div class="card mx-auto mb-4" style="width: 80rem;">
+        <h3 class="card-header">User Profile</h3>
+        <div class="card-body">
+                
             <h6 class="card-text">
                 User name: {{ user.first_name }} {{ user.last_name }}
             </h6>
@@ -24,14 +25,14 @@
         </div>
     </div>
 
-    <div class="card mx-auto mb-5" style="width: 80rem;">
+    <div class="card mx-auto mb-4" style="width: 80rem;">
         <div class="card-body">
             <div id="root"></div>
             <script src = "/static/js/App.jsx" type="text/jsx"></script>
         </div>
     </div>
 
-    <div class="card mx-auto mb-5" style="width: 80rem;">
+    <div class="card mx-auto mb-4" style="width: 80rem;">
         <div class="card-header">Comment History</div>                            
             {% for rating in ratings %}
             <ul class="list-group list-group-flush">
