@@ -37,10 +37,10 @@
                     Average Rating: {{ trail.avg_rating }} 
                 </p>
                 <p class="card-text">
-                    Features: {{ trail.features }}
+                    Features: {{ trail.features.strip("[]").replace("'", "") }}
                 </p>
                 <p class="card-text">
-                    Activities: {{ trail.activities }}
+                    Activities: {{ trail.activities.strip("[]").replace("'", "") }}
                 </p>
 
                 <p class="card-text">View Map:     
