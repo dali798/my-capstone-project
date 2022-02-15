@@ -35,7 +35,7 @@
   ![alt img](https://github.com/dali798/my-capstone-project/blob/main/static/img/trail_detail.png "trail detail")
   ![alt img](https://github.com/dali798/my-capstone-project/blob/main/static/img/googlemap.PNG "google map")
 
-  * After logged in, user can rate and comment a trail. User can log in to user profile which show history of comments and      ratings for trails.
+  * After logged in, user can rate and comment a trail. User can log in to user profile which show history of comments and      ratings for trails. To make it more interactivate, I used React to let users jot down a checklist for hiking gears. 
 
   ![alt img](https://github.com/dali798/my-capstone-project/blob/main/static/img/user_profile.png "user profile")
 
