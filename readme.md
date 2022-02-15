@@ -18,7 +18,7 @@
   * React
   * Bootstrap
   * Python unittest module
-  * Google Map API
+  * Google Maps API
   * Weather API
 
   ## Features
