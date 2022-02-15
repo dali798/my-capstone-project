@@ -1,7 +1,7 @@
-# National Park Hiking Trail
+# Adventure
 
 ## Summary
-   National Park Hiking Trail is a full stack web app that can help users to plan their national parks trips by providing detail hiking trails information of 60 national parks across US.
+   Adventure is a full stack web app that can help users to plan their national parks trips by providing detail hiking trails information of 60 national parks across US.
 
 ## Technologies
   
