@@ -37,5 +37,7 @@
 
   * After logged in, user can rate and comment a trail. User can log in to user profile which show history of comments and      ratings for trails.
 
+  ![alt img](https://github.com/dali798/my-capstone-project/blob/main/static/img/user_profile.png "user profile")
+
   ![alt img](https://github.com/dali798/my-capstone-project/blob/main/static/img/rating.png "rating")
 
