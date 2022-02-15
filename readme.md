@@ -29,10 +29,11 @@
 
   ![trails img](https://github.com/dali798/my-capstone-project/blob/main/static/img/by_trail.png "trails name")
 
-  ![trails img](https://github.com/dali798/my-capstone-project/blob/main/static/img/by_park.png "parks name")
+  ![trails img](https://github.com/dali798/my-capstone-project/blob/main/static/img/by_park2.PNG "parks name")
 
   * integrated API to show google map and current weather conditions of a trail
   ![alt img](https://github.com/dali798/my-capstone-project/blob/main/static/img/trail_detail.png "trail detail")
+  ![alt img](https://github.com/dali798/my-capstone-project/blob/main/static/img/googlemap.PNG "google map")
 
   * After logged in, user can rate and comment a trail. User can log in to user profile which show history of comments and      ratings for trails.
 
